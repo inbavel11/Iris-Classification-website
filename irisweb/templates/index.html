@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iris Class Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #28a745;
+        }
+        .iris-image {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center">Iris Class Prediction</h3>
+                        <form action="/predict" method="post">
+                            <div class="form-group">
+                                <label for="sepal_length">Sepal Length:</label>
+                                <input type="text" class="form-control" id="sepal_length" name="sepal_length" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="sepal_width">Sepal Width:</label>
+                                <input type="text" class="form-control" id="sepal_width" name="sepal_width" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="petal_length">Petal Length:</label>
+                                <input type="text" class="form-control" id="petal_length" name="petal_length" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="petal_width">Petal Width:</label>
+                                <input type="text" class="form-control" id="petal_width" name="petal_width" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+                        </form>
+                        {% if prediction_text %}
+                            <div class="result text-center">
+                                <h4>{{ prediction_text }}</h4>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Iris_versicolor_3.jpg" alt="Iris Flower" class="iris-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
